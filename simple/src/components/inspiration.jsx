@@ -10,12 +10,12 @@ const Inspiration = ({ children }) => {
         setIndex((index+1)% quotes.length)
     }
   return (
-      <>
-          <p>Your inspirational quote is:</p>
+      <div className='flex flex-col justify-center  bg-slate-400 '>
+          <p className='text-2xl'>Your inspirational quote is:</p>
           <Fancy text={quote} />
-          <button onClick={next}>Click for quote</button>
+          <button className='py-2 px-5 bg-violet-500 text-white font-semibold rounded-full ' onClick={next}>Click for quote</button>
           {children}
-    </>
+    </div>
   )
 }
 
