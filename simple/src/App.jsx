@@ -2,6 +2,7 @@ import Copyright from "./components/copyrite"
 import Inspiration from "./components/inspiration"
 import Fancy from "./components/fancy"
 import Sclupture from "./components/sclupture"
+import Todo from "./components/todo"
 export default function App() {
   return (
     <div className="flex flex-col max-w-7xl bg-slate-300 mx-auto max-h-screen">
@@ -10,6 +11,8 @@ export default function App() {
         <Copyright year={2000} />
       </Inspiration>
       <Sclupture />
+      {/* <button onClick={}></button> */}
+      <Todo/>
     </div>
   )
 }
