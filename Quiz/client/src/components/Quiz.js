@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Questions from './Questions';
+import { useSelector } from 'react-redux';
+
+// redux store import
 
 const Quiz = () => {
+    const {questions} = useSelector((state) => state)
+    useEffect(()=>{console.log(questions.queue)})
     function handlePrevious(){
         console.log('previous');
     }
