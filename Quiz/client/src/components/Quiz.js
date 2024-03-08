@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Questions from './Questions';
 import { useSelector, useDispatch } from 'react-redux';
 import { MoveNextQuestion, MovePreviousQuestion } from '../hooks/FetchQuestions';
 import { PushAnswer } from '../hooks/setResult';
+import { Navigate } from 'react-router-dom';
 
 // redux store import
-
 const Quiz = () => {
     // const trace = useSelector((state) => state.questions.trace);
+    const[check, setCheck] = useState(undefined);
+    const result = useSelector((state) => state.result.result);
     const {queue , trace} = useSelector((state) => state.questions)
     const dispatch = useDispatch();
-    useEffect(()=>{console.log(trace)})
+
+    useEffect(() => { console.log(result) });
     function handlePrevious() {
         if(trace > 0) {
             
@@ -21,14 +24,27 @@ const Quiz = () => {
         if (trace < queue.length) {
             
             // update trace value by 1
-            dispatch(MoveNextQuestion())
-            dispatch(PushAnswer(1))
+            dispatch(MoveNextQuestion());
+            //insert new array in result
+            if(result.length < trace){
+                dispatch(PushAnswer(check));
+            }
+            // dispatch(PushAnswer(check));
         }
     }
 
     function onChecked(check) {
-        console.log(check)
+    
+        setCheck(check);
     }
+    // finish exam
+    if (result.length && result.length >= queue.length) {
+        return (
+            <Navigate to={'/result'} replace="true"></Navigate>
+        )
+    } 
+    
+
   return (
       <div className='container'>
           <h1 className='title text-light'>Quiz Application</h1>
@@ -36,7 +52,8 @@ const Quiz = () => {
           {/* display questions */}
           <Questions onChecked={onChecked}/>
           <div>
-              <button className='btn' onClick={handlePrevious}>Previous</button>
+              {trace > 0 ? <button className='btn' onClick={handlePrevious}>Previous</button> : <div></div>}
+              {/* <button className='btn' onClick={handlePrevious}>Previous</button> */}
               <button className='btn' onClick={handleNext}>Next</button>
           </div>
     </div>
