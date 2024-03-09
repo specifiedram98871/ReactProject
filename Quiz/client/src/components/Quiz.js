@@ -13,7 +13,7 @@ const Quiz = () => {
     const {queue , trace} = useSelector((state) => state.questions)
     const dispatch = useDispatch();
 
-    useEffect(() => { console.log(result) });
+    
     function handlePrevious() {
         if(trace > 0) {
             
@@ -26,11 +26,13 @@ const Quiz = () => {
             // update trace value by 1
             dispatch(MoveNextQuestion());
             //insert new array in result
-            if(result.length < trace){
+            if(result.length <= trace){
                 dispatch(PushAnswer(check));
             }
             // dispatch(PushAnswer(check));
         }
+        // reset the value of the checked
+        setCheck(undefined);
     }
 
     function onChecked(check) {
