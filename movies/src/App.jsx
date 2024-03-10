@@ -14,7 +14,7 @@ function App() {
         method: 'GET',
         url: `https://imdb8.p.rapidapi.com/auto-complete?q=${moviename}`,
         headers: {
-          'X-RapidAPI-Key': '2f944a4464msh572a9f938e89f06p10d411jsnedd4e2a8c2ec',
+          'X-RapidAPI-Key': 'Your key',
           'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
         },
       };
