@@ -4,6 +4,7 @@ import '../style/App.css';
 import Result from './Result';
 import Quiz from './Quiz';
 import Main from './Main';
+import { CheckUserExist } from '../help/helper';
 
 const router = createBrowserRouter([
   {
@@ -12,11 +13,11 @@ const router = createBrowserRouter([
   },
   {
     path : '/quiz',
-    element: <Quiz />,
+    element:  <CheckUserExist><Quiz /></CheckUserExist>,
   },
   {
     path: '/result',
-    element: <Result />,
+    element:  <CheckUserExist><Result /></CheckUserExist>,
   },
 ])
 function App() {
