@@ -11,4 +11,4 @@ const resultModel = new Schema({
     achieved: { type: String, default: [] },
     createdAt: { type: Date, default: Date.now },
 })
-export default mongoose.model("Result", resultModel)
+export default mongoose.model("Results", resultModel)
