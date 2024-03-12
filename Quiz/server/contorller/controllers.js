@@ -34,13 +34,30 @@ export async function dropQuestions(req, res) {
 }
 
 export async function getResult(req, res) {
-    res.json("Get Result");
+    try {
+        const r = await Results.find();
+        res.json(r);
+    } catch (error) {
+        res.json({ error });
+    }
 }
 // post result
 export async function storeResult(req, res) {
-    res.json("post Result");
+    try {
+        const { username, result, attempts, points, achieved } = req.body;
+        if (!username && !result) throw new Error("username and result is required");
+        Results.create({ username, result, attempts, points, achieved });
+        res.json({ msg: "Result Saved Successfully" });
+    } catch (error) {
+        req.json({ error });
+    }
 }
 // delete result
 export async function dropResult(req, res) {
-    res.json("delete Result");
+    try {
+        await Results.deleteMany();
+        res.json({ msg: "Result Deleted Successfully" });
+    } catch (error) {
+        res.json({ error });
+    }
 }
