@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetAllAction } from '../redux/question_reducer';
 import { resetResultAction } from '../redux/result_reducer';
 import { attempts_Number ,earnPoints_Number, flagResult} from '../help/helper';
+import { usePublishResult } from '../hooks/setResult';
 
 const Result = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ const Result = () => {
   const totalPoints = queue.length * 10;
   const earnPoints = earnPoints_Number(result, answers, 10);
   const flag = flagResult(totalPoints, earnPoints);
+  // store result in backend
+  usePublishResult({ result, username: userId ,attempts,points:earnPoints,totalPoints,achieved:flag?"Pass":"Fail" });
   function handleStart() {
     dispatch(resetAllAction());
     dispatch(resetResultAction());
@@ -26,8 +29,8 @@ const Result = () => {
       <h1>Quiz Application</h1>
       <div className='result flex-center'>
         <div className='flex'>
-          <span className='username'>Username</span>
-          <span className='bold'>Makyuri</span>
+          <span className='username'>Username:</span>
+          <span className='bold'>{userId}</span>
         </div>
           <div className='flex'>
           <span className='username'>Total Quiz points:</span>
