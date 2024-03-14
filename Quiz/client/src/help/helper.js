@@ -17,9 +17,13 @@ export function CheckUserExist({ children }) {
     const auth = useSelector(state => state.result.userId);
     return auth ? children:<Navigate to={'/'} replace={true}></Navigate>
 }
-export async function getServerData(url,callback) {
-    const response = await axios.get(url);
-    const data =  response.data;// ? allow data only if available
+// export async function getServerData(url,callback) {
+//     const response = await axios.get(url);
+//     const data =  response.data;// ? allow data only if available
+//     return callback ? callback(data) : data;
+// }
+export async function getServerData(url, callback) {
+    const data = await (await axios.get(url))?.data;
     return callback ? callback(data) : data;
 }
 // export async function getServerData(url, callback) {

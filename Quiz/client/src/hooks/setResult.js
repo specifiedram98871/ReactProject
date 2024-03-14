@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { postServerData } from "../help/helper";
 import * as Action from "../redux/result_reducer";
 
@@ -29,3 +30,21 @@ export const usePublishResult = (resultData) => {
         }
     })();
 }
+// export const usePublishResult = (resultData) => {
+//     useEffect(() => {
+//         const publishData = async () => {
+//             const { result, username } = resultData;
+//             try {
+//                 if (result.length !== 0 && username) {
+//                     await postServerData(`${process.env.REACT_APP_SERVER_HOSTNAME}/api/result`, resultData);
+//                 } else {
+//                     throw new Error("Username not found or result is empty.");
+//                 }
+//             } catch (error) {
+//                 console.log(error);
+//             }
+//         };
+
+//         publishData();
+//     }, [resultData]);
+// };

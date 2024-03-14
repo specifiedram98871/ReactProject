@@ -11,9 +11,6 @@ const Result = () => {
   const dispatch = useDispatch();
   const { questions: { queue, answers }, result: { result, userId } } = useSelector(state => state);
   const attempts = attempts_Number(result);
-  useEffect(() => {
-    console.log(flag);
-  })
 
   const totalPoints = queue.length * 10;
   const earnPoints = earnPoints_Number(result, answers, 10);
