@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Questions from './Questions';
 import { useSelector, useDispatch } from 'react-redux';
 import { MoveNextQuestion, MovePreviousQuestion } from '../hooks/FetchQuestions';
@@ -48,15 +48,15 @@ const Quiz = () => {
     
 
   return (
-      <div className='container'>
-          <h1 className='title text-light'>Quiz Application</h1>
+      <div class='container mx-auto mt-8'>
+          <h1 class='text-3xl text-center'>Quiz Application</h1>
 
           {/* display questions */}
-          <Questions onChecked={onChecked}/>
+          <Questions />
           <div>
               {trace > 0 ? <button className='btn' onClick={handlePrevious}>Previous</button> : <div></div>}
               {/* <button className='btn' onClick={handlePrevious}>Previous</button> */}
-              <button className='btn' onClick={handleNext}>Next</button>
+              <button class='h-10 px-6 font-semibold rounded-md bg-black text-white' onClick={handleNext}>Next</button>
           </div>
     </div>
   )

@@ -27,8 +27,9 @@ const Questions = ({ onChecked }) => {
     if(serverError) return<h3 className='text-light'>{serverError||'Unknown Error'}</h3>
     
   return (
-      <div className='questions'>
+      <div className=''>
           <h2>{questions?.question}</h2>
+          {/* // ?.it will return undefined if questions is null not error */}
           <ul key={questions?.id}>
               
               {questions?.options.map((q, i) => 

@@ -22,9 +22,10 @@ const router = createBrowserRouter([
 ])
 function App() {
   return (
-    <>
-    <RouterProvider router={router} />
-    </>
+    <div class='container mx-auto mt-8'>
+      <RouterProvider router={router} />
+      <h2 class="text-blue-600 text-center text-4xl font-extrabold">Hello</h2>
+    </div>
   );
 }
 
