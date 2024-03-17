@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Grid, GridItem,Input, Image, Text } from '@chakra-ui/react';
+import { Box, Grid, Image, Text } from '@chakra-ui/react';
 import Searchbar from './Component/searchbar';
-
+import Searchhistory from './Component/searchhistory';
 function App() {
   const [moviename, setMoviename] = useState('');
   const [movielist, setMovieList] = useState([]);
+
   
- 
   // The error seems to be occurring because you're assigning the result of useEffect to fetchData, which is incorrect. useEffect doesn't return anything, so fetchData ends up being undefined. Instead, you should define fetchData as a separate function and then use it inside useEffect for data fetching.
     const fetchData = async () => {
       const options = {
@@ -18,7 +18,7 @@ function App() {
           'X-RapidAPI-Host': 'imdb8.p.rapidapi.com',
         },
       };
-      console.log(options);
+      // console.log(options);
       try {
         const response = await axios.request(options);
         setMovieList(response.data.d);
@@ -39,15 +39,16 @@ function App() {
       width={'100%'}
       margin={'auto'}
     >
-    <Searchbar movie={moviename} handleMoviename={setMoviename} hitApi={fetchData} />
+      <Searchbar movie={moviename} handleMoviename={setMoviename} hitApi={fetchData} />
+      <Searchhistory moviename={moviename} />
     {
       movielist.length === 0 ?(  <Box display="flex" justifyContent={"center"} width="100%">
       <Text>No Data</Text>
   </Box>) : 
     
-          (
+          ( 
             <Grid
-               width={'1000px'}
+               width={'700px'}
                margin={'auto'}
                marginTop={'2rem'}
                templateColumns='repeat(3, 1fr)' gap={4}>
