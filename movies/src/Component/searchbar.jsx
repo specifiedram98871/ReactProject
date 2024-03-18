@@ -1,4 +1,4 @@
-import { Button, Box,Flex, Input } from '@chakra-ui/react'
+import { Button, Box,Flex, Input, Text } from '@chakra-ui/react'
 import { useState } from 'react';
 const Searchbar = ({ movie, handleMoviename, hitApi }) => {
   const [moviehistory, setMoviehistory] = useState([]);
@@ -14,7 +14,8 @@ const Searchbar = ({ movie, handleMoviename, hitApi }) => {
       console.log(moviehistory);
     }
   return (
-    <Flex width={'400px'} margin={'auto'}
+    <Flex direction={'column'}  alignItems={'center'}>
+    <Flex width={'400px'} direction={'row'} margin={'auto' }
     marginTop={'2rem'}>
       <Input
         padding={"0.5rem"}
@@ -24,9 +25,24 @@ const Searchbar = ({ movie, handleMoviename, hitApi }) => {
         value={movie} onChange={(e) => handleMoviename(e.target.value)} placeholder='Search For  A Movie'  />
       {/* <Button colorScheme='green' variant='solid' onClick={hitApi} >Search</Button> */}
       <Button colorScheme='green' variant='solid' onClick={history} marginLeft={'10px'}>Add History</Button>
-      <Box> {moviehistory.map((movie) => (
-        <h1 key={movie.id}>{movie.movie }</h1>
-      ))} </Box>
+      </Flex>
+      {
+        moviehistory.length == 0 ? (
+          <div>No data</div>
+          ):
+          <Box marginTop={'2rem'} border={'1px solid orange'} padding={'2rem'} minWidth={'400px'}> {moviehistory.map((movie) => (
+            <ul key={movie.id}>
+              <Text fontWeight={'bold'}
+                textDecoration={'underline'}
+                color='tomato'
+                marginBottom={'20px'}
+              >Your Search History:</Text>
+              <li>
+              {movie.movie}
+            </li>
+            </ul>
+          ))} </Box>
+      }
     </Flex>
   )
 }
