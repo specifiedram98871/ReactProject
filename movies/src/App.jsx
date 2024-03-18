@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Box, Grid, Image, Text } from '@chakra-ui/react';
 import Searchbar from './Component/searchbar';
 import Searchhistory from './Component/searchhistory';
+import Movingdot from './Component/movingdot';
 function App() {
   const [moviename, setMoviename] = useState('');
   const [movielist, setMovieList] = useState([]);
@@ -69,7 +70,7 @@ function App() {
         </Box>
       ))}
           </Grid>)}
-      
+      <Movingdot/>
     </Box>
   );
 }

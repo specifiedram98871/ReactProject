@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box } from '@chakra-ui/react'
+// import { Box } from '@chakra-ui/react'
 import axios from 'axios'
 import RecipeCard from './component/News'
 

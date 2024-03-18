@@ -9,25 +9,26 @@ const RecipeCard = ({newsList,handleRequest}) => {
 
      const handlebutton =(e)=>{
         handleRequest(newsl)
-        console.log(newsl)
+       console.log(e);
      }
 
   return (
     <>
      <Input
           type="text"
-          placeholder="Add a todo..."
+          placeholder="Search For News"
           value={newsl}
           onChange={(e) => setnewslList(e.target.value)}
         />
     <Button type='submit'  onClick={()=>{handlebutton(newsl)}}>Submit</Button>
-    {newsList.length ===0?
+    {newsList.length === 0 ?
      <Box  display="flex"  justifyContent={"center"} width="100%">
        <Spinner
          size='xl'
        />
 </Box>
-    :
+        :
+        <Box display="flex"  justifyContent={"center"} width={'700px'} margin={"auto"}>
     <Grid templateColumns='repeat(2, 1fr)' gap={6}>
         {newsList.map((news)=>{
             return(
@@ -43,7 +44,8 @@ const RecipeCard = ({newsList,handleRequest}) => {
             )
         })
        } 
-    </Grid>
+          </Grid>
+          </Box>
 }
         </>
    
