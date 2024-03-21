@@ -16,14 +16,14 @@ const Foreground = () => {
 
     },
     { id:2,
-      desc:"loremsdhsjbijfbfjbsifjbsfijbsf",
+      desc:"Must say you are a enthiugast",
       fileSize:".9mb",
       close:true,
       tag: {isOpen: false, tagTitle: "Download Now", tagColor:"green"},
 
     },
     { id:3,
-      desc:"loremsdhsjbijfbfjbsifjbsfijbsf",
+      desc: "Hello everyone welcome to coding world.lets rock",
       fileSize:".9mb",
       close:true,
       tag: {isOpen: true, tagTitle: "Download Now", tagColor:"blue"},
