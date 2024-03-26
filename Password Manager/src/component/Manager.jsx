@@ -1,10 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Manager = () => {
+  const [formData, setFormData] = useState({
+    site: "",
+    username: "",
+    password: "",
+  });
+  const [passArr, setPassArr] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
+  useEffect(() => {
+    let password = localStorage.getItem("password");
+    if (password) {
+      setPassArr(JSON.parse(password));
+    }
+  }, []);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
+  };
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const savePassword = () => {
+    // console.log(formData);
+    setPassArr([...passArr, formData]);
+    localStorage.setItem("password", JSON.stringify([...passArr, formData]));
+    console.log(passArr);
   };
 
   return (
@@ -22,21 +46,27 @@ const Manager = () => {
         <input
           className="rounded-full border border-sky-500 w-full p-4 py-1"
           type="text"
-          name=""
+          value={formData.site}
+          onChange={handleChange}
+          name="site"
           id=""
         />
         <div className="flex w-full justify-between gap-9">
           <input
             className="rounded-full border border-sky-500 w-full p-4 py-1"
             type="text"
-            name=""
+            onChange={handleChange}
+            value={formData.username}
+            name="username"
             id=""
           />
           <div className="relative">
             <input
               className="rounded-full border border-sky-500 w-full p-4 py-1"
               type={showPassword ? "text" : "password"}
-              name=""
+              value={formData.password}
+              onChange={handleChange}
+              name="password"
               id=""
             />
             <span
@@ -63,7 +93,10 @@ const Manager = () => {
           </div>
         </div>
 
-        <button className="flex items-center bg-sky-600  rounded-full w-fit px-4 hover:bg-sky-400">
+        <button
+          onClick={savePassword}
+          className="flex items-center bg-sky-600  rounded-full w-fit px-4 hover:bg-sky-400"
+        >
           <lord-icon
             src="https://cdn.lordicon.com/zrkkrrpl.json"
             trigger="in"
