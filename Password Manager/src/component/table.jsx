@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Table = ({ passwords }) => {
+  const [passwordList, setPasswordList] = useState(passwords);
+  useEffect(() => {
+    localStorage.setItem("password", JSON.stringify(passwordList));
+  }, [passwordList]);
+  const handleDelete = (index) => {
+    // setPasswordList(passwordList.filter((p, i) => i !== index));
+    setPasswordList((prevPasswords) =>
+      prevPasswords.filter((p, i) => i !== index)
+    );
+    console.log(passwordList);
+  };
+  const handleEdit = (index) => {
+    console.log(index);
+  };
   return (
     <div>
       {passwords.length === 0 ? (
@@ -28,14 +42,22 @@ const Table = ({ passwords }) => {
                     <td className="border px-4 py-2">{p.site}</td>
                     <td className="border px-4 py-2">{p.username}</td>
                     <td className="border px-4 py-2">{p.password}</td>
-                    <div className=" border flex justify-around p-1">
-                      <button className="bg-sky-600 text-white px-4 py-2 rounded-lg">
-                        Edit
-                      </button>
-                      <button className="bg-red-600 text-white px-4 py-2 rounded-lg">
-                        Delete
-                      </button>
-                    </div>
+                    <td>
+                      <div className=" flex justify-around p-1">
+                        <button
+                          onClick={handleEdit}
+                          className="bg-sky-600 text-white px-4 py-2 rounded-lg"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(index)}
+                          className="bg-red-600 text-white px-4 py-2 rounded-lg"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
                   </tr>
                 );
               })}
