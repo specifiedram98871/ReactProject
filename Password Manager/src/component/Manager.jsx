@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "./table";
+
 const Manager = ({}) => {
   const [formData, setFormData] = useState({
     site: "",
@@ -11,29 +12,32 @@ const Manager = ({}) => {
   const [passArr, setPassArr] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const [showTable, setShowTable] = useState(false);
+
   useEffect(() => {
     let password = localStorage.getItem("password");
     if (password) {
-      setPassArr(JSON.parse(password)); //parses string to object as{a:'b',c:d}
+      setPassArr(JSON.parse(password));
     }
   }, []);
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
   const toggleTable = () => {
     setShowTable((prevState) => !prevState);
   };
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
+
   const savePassword = () => {
-    // console.log(formData);
     setPassArr([...passArr, formData]);
-    localStorage.setItem("password", JSON.stringify([...passArr, formData])); //saves password locally  in string format{ "a":"b","c":"d"}
-    console.log(passArr);
+    localStorage.setItem("password", JSON.stringify([...passArr, formData]));
   };
 
   return (
@@ -56,6 +60,7 @@ const Manager = ({}) => {
             onChange={handleChange}
             name="site"
             id=""
+            placeholder="Site"
           />
           <div className="flex w-full justify-between gap-9">
             <input
@@ -65,6 +70,7 @@ const Manager = ({}) => {
               value={formData.username}
               name="username"
               id=""
+              placeholder="Username"
             />
             <div className="relative">
               <input
@@ -74,6 +80,7 @@ const Manager = ({}) => {
                 onChange={handleChange}
                 name="password"
                 id=""
+                placeholder="Password"
               />
               <span
                 className="absolute right-0 top-1 cursor-pointer"
@@ -116,8 +123,7 @@ const Manager = ({}) => {
             className="bg-green-600  rounded-full w-fit p-2 hover:bg-red-400"
             onClick={toggleTable}
           >
-            ShowPassword
-            <span className="text-white"> &gt;</span>
+            Show Passwords <span className="text-white"> &gt;</span>
           </button>
         </div>
       </div>
