@@ -23,7 +23,6 @@ const Todo = () => {
     const updatedArtists = artists.filter((a) => a.id !== id);
     setArtists(updatedArtists);
     localStorage.setItem("data", JSON.stringify(updatedArtists));
-    console.log(artists);
   }
 
   return (

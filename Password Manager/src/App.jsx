@@ -2,17 +2,17 @@ import React from "react";
 import Navbar from "./component/Navbar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Manager from "./component/Manager";
-import Table from "./component/table";
+// import Table from "./component/table";
 const App = () => {
   const routes = [
     {
       path: "/",
       element: <Manager />,
     },
-    {
-      path: "/table",
-      element: <Table />,
-    },
+    // {
+    //   path: "/table",
+    //   element: <Table />,
+    // },
   ];
   return (
     <>
