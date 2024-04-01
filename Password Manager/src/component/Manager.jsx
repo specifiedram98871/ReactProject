@@ -18,13 +18,13 @@ const Manager = () => {
   const [showTable, setShowTable] = useState(false);
 
   useEffect(() => {
-    let password = localStorage.getItem("password");
-    if (password) {
-      setPassArr(JSON.parse(password));
+    let passwords = localStorage.getItem("password");
+    if (passwords) {
+      setPassArr(JSON.parse(passwords));
     }
   }, []);
 
-  const togglePasswordVisibility = () => {
+  const togglePasswordVisibility = (text) => {
     setShowPassword((prevState) => !prevState);
     toast("🦄Baby Dancy", {
       position: "top-right",
@@ -37,6 +37,7 @@ const Manager = () => {
       theme: "light",
       transition: "Bounce",
     });
+    navigator.clipboard.writeText(text);
   };
 
   const toggleTable = () => {
@@ -51,19 +52,16 @@ const Manager = () => {
   };
 
   const savePassword = () => {
-    const newPass = { ...formData, id: uuidv4() };
-    setPassArr((prevPassArr) => [...prevPassArr, newPass]);
-    localStorage.setItem("password", JSON.stringify([...passArr, newPass]));
-    console.log(newPass);
-  };
-
-  const handleDelete = (index) => {
-    // const newArr = passArr.filter((i) => i !== index);
-    // setPassArr([...newArr]); // setPassArr(newArr);
-    // localStorage.setItem("password", JSON.stringify([...newArr]));
+    setPassArr([...passArr, { ...formData, id: uuidv4() }]);
+    localStorage.setItem(
+      "password",
+      JSON.stringify([...passArr, { ...formData, id: uuidv4() }])
+    );
     console.log(passArr);
   };
-  const handleEdit = (index) => {};
+
+  const handleDelete = (id) => {};
+  const handleEdit = (id) => {};
 
   return (
     <div>
@@ -179,10 +177,10 @@ const Manager = () => {
               </tr>
             </thead>
             <tbody>
-              {passArr.map((password, index) => (
+              {passArr.map((password, i) => (
                 <tr
-                  key={index}
-                  className={index % 2 === 0 ? "bg-gray-200" : "bg-white"}
+                  key={i}
+                  className={i % 2 === 0 ? "bg-gray-200" : "bg-white"}
                 >
                   <td className="border px-4 py-2">{password.site}</td>
                   <td className="border px-4 py-2">{password.username}</td>
@@ -191,14 +189,14 @@ const Manager = () => {
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                       onClick={() => {
-                        handleEdit(index);
+                        handleEdit(password.id);
                       }}
                     >
                       Edit
                     </button>{" "}
                     <button
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                      onClick={() => handleDelete(index)}
+                      onClick={() => handleDelete(password.id)}
                     >
                       Delete
                     </button>
