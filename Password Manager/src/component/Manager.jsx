@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 import "react-toastify/dist/ReactToastify.css";
 // import Table from "./table";
-let id = 0;
+// let id = 0;
 
 const Manager = () => {
   const [formData, setFormData] = useState({
-    id: id++,
     site: "",
     username: "",
     password: "",
@@ -51,14 +51,19 @@ const Manager = () => {
   };
 
   const savePassword = () => {
-    setPassArr([...passArr, formData]);
-    localStorage.setItem("password", JSON.stringify([...passArr, formData]));
+    const newPass = { ...formData, id: uuidv4() };
+    setPassArr((prevPassArr) => [...prevPassArr, newPass]);
+    localStorage.setItem("password", JSON.stringify([...passArr, newPass]));
+    console.log(newPass);
   };
+
   const handleDelete = (index) => {
-    const newArr = passArr.filter((i) => i !== index);
-    setPassArr([...newArr]); // setPassArr(newArr);
-    localStorage.setItem("password", JSON.stringify([...newArr]));
+    // const newArr = passArr.filter((i) => i !== index);
+    // setPassArr([...newArr]); // setPassArr(newArr);
+    // localStorage.setItem("password", JSON.stringify([...newArr]));
+    console.log(passArr);
   };
+  const handleEdit = (index) => {};
 
   return (
     <div>
