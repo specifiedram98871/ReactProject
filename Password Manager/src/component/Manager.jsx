@@ -57,11 +57,25 @@ const Manager = () => {
       "password",
       JSON.stringify([...passArr, { ...formData, id: uuidv4() }])
     );
+    setFormData({
+      site: "",
+      username: "",
+      password: "",
+    });
     console.log(passArr);
   };
 
-  const handleDelete = (id) => {};
-  const handleEdit = (id) => {};
+  const handleDelete = (id) => {
+    console.log("Deleting password with id:", id);
+    const newPasswordList = passArr.filter((item) => item.id !== id);
+    setPassArr(newPasswordList);
+    localStorage.setItem("password", JSON.stringify(newPasswordList));
+  };
+  const handleEdit = (id) => {
+    console.log("Editing password with id:", id);
+    setFormData(passArr.filter((item) => item.id === id)[0]);
+    setPassArr(passArr.filter((item) => item.id !== id));
+  };
 
   return (
     <div>
