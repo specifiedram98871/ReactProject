@@ -111,7 +111,7 @@ const Manager = () => {
             value={formData.site}
             onChange={handleChange}
             name="site"
-            id=""
+            id="site"
             placeholder="Site"
           />
           <div className="flex w-full justify-between gap-9">
@@ -121,7 +121,7 @@ const Manager = () => {
               onChange={handleChange}
               value={formData.username}
               name="username"
-              id=""
+              id="name"
               placeholder="Username"
             />
             <div className="relative">
@@ -131,7 +131,7 @@ const Manager = () => {
                 value={formData.password}
                 onChange={handleChange}
                 name="password"
-                id=""
+                id="password"
                 placeholder="Password"
               />
               <span
