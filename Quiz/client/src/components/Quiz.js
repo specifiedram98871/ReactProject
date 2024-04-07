@@ -52,7 +52,7 @@ const Quiz = () => {
           <h1 class='text-3xl text-center'>Quiz Application</h1>
 
           {/* display questions */}
-          <Questions />
+          <Questions onChecked={onChecked} />
           <div>
               {trace > 0 ? <button className='btn' onClick={handlePrevious}>Previous</button> : <div></div>}
               {/* <button className='btn' onClick={handlePrevious}>Previous</button> */}

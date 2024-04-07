@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import ResultTable from './ResultTable';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,36 +22,36 @@ const Result = () => {
     dispatch(resetResultAction());
   }
   return (
-    <div className='container'>
-      <h1>Quiz Application</h1>
-      <div className='result flex-center'>
-        <div className='flex'>
-          <span className='username'>Username:</span>
-          <span className='bold'>{userId}</span>
+    <div className='container mx-auto p-4'>
+      <h1 className='text-3xl font-bold mb-4'>Quiz Application</h1>
+      <div className='result bg-gray-100 rounded p-4'>
+        <div className='flex justify-between mb-2'>
+          <span className='text-gray-600'>Username:</span>
+          <span className='font-bold'>{userId}</span>
         </div>
-          <div className='flex'>
-          <span className='username'>Total Quiz points:</span>
-          <span className='bold'>{ totalPoints}</span>
+        <div className='flex justify-between mb-2'>
+          <span className='text-gray-600'>Total Quiz points:</span>
+          <span className='font-bold'>{ totalPoints}</span>
         </div>
-          <div className='flex'>
-          <span className='username'>Total Questions:</span>
-          <span className='bold'>{queue.length}</span>
-          </div>
-          <div className='flex'>
-          <span className='username'>Total Attempts:</span>
-          <span className='bold'>{attempts}</span>
-          </div>
-          <div className='flex'>
-          <span className='username'>Total Earn Points:</span>
-          <span className='bold'>{earnPoints || 0}</span>
-          </div>
-          <div className='flex'>
-          <span className='username'>Quiz Result</span>
-          <span className='bold'>{ flag ?'Pass':'Fail'}</span>
-          </div>
+        <div className='flex justify-between mb-2'>
+          <span className='text-gray-600'>Total Questions:</span>
+          <span className='font-bold'>{queue.length}</span>
+        </div>
+        <div className='flex justify-between mb-2'>
+          <span className='text-gray-600'>Total Attempts:</span>
+          <span className='font-bold'>{attempts}</span>
+        </div>
+        <div className='flex justify-between mb-2'>
+          <span className='text-gray-600'>Total Earn Points:</span>
+          <span className='font-bold'>{earnPoints || 0}</span>
+        </div>
+        <div className='flex justify-between mb-2'>
+          <span className='text-gray-600'>Quiz Result</span>
+          <span className='font-bold'>{ flag ? 'Pass' : 'Fail'}</span>
+        </div>
       </div>
-      <div className='start'>
-        <Link className='btn' to={'/'}  onClick={handleStart}>Restart</Link>
+      <div className='start mt-4'>
+        <Link className='btn bg-blue-500 text-white py-2 px-4 rounded inline-block' to={'/'}  onClick={handleStart}>Restart</Link>
       </div>
       <div className='container'>
         <ResultTable/>
@@ -60,4 +60,4 @@ const Result = () => {
   )
 }
 
-export default Result
+export default Result;
