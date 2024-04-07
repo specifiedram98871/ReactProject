@@ -9,7 +9,6 @@ const Questions = ({ onChecked }) => {
     const [checked, setChecked] = useState(undefined);
     const [{ isLoading, serverError }] = useFetchQuestion();
     const questions = useSelector((state) => state.questions.queue[state.questions.trace]);
-    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -26,9 +25,9 @@ const Questions = ({ onChecked }) => {
     if (serverError) return <h3 className='text-light'>{serverError || 'Unknown Error'}</h3>;
 
     return (
-        <div className=''>
-            <h2>{questions?.question}</h2>
-            <ul className=''>
+        <div className='bg-white p-6 rounded-lg shadow-md'>
+            <h2 className='text-xl font-semibold mb-4'>{questions?.question}</h2>
+            <ul>
                 {questions?.options.map((q, i) => (
                     <li key={i} className='flex items-center mb-4'>
                         <input
@@ -37,9 +36,10 @@ const Questions = ({ onChecked }) => {
                             name='options'
                             id={`q${i}-option`}
                             onChange={() => onSelect(i)}
+                            className='mr-2'
                         />
-                        <label htmlFor={`q${i}-option`} className='ml-2'>{q}</label>
-                        <div className={`check ml-2 ${result[trace] === i ? 'checked' : ''}`}></div>
+                        <label htmlFor={`q${i}-option`}>{q}</label>
+                        {result[trace] === i && <div className='bg-green-500 w-4 h-4 rounded-full ml-2'></div>}
                     </li>
                 ))}
             </ul>

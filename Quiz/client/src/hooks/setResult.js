@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { postServerData } from "../help/helper";
 import * as Action from "../redux/result_reducer";
 
