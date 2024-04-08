@@ -17,11 +17,23 @@ const Manager = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showTable, setShowTable] = useState(false);
 
+  async function getPassword() {
+    const req = await fetch("http://localhost:5000/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await req.json();
+    setPassArr(data);
+    console.log(data);
+  }
   useEffect(() => {
-    let passwords = localStorage.getItem("password");
-    if (passwords) {
-      setPassArr(JSON.parse(passwords));
-    }
+    // let passwords = localStorage.getItem("password");
+    // if (passwords) {
+    //   setPassArr(JSON.parse(passwords));
+    getPassword();
+    //  }
   }, []);
 
   const togglePasswordVisibility = (text) => {
@@ -196,9 +208,9 @@ const Manager = () => {
                   key={i}
                   className={i % 2 === 0 ? "bg-gray-200" : "bg-white"}
                 >
-                  <td className="border px-4 py-2">{password.site}</td>
-                  <td className="border px-4 py-2">{password.username}</td>
-                  <td className="border px-4 py-2">{password.password}</td>
+                  <td className="border px-4 py-2">{password.id}</td>
+                  <td className="border px-4 py-2">{password.name}</td>
+                  <td className="border px-4 py-2">{password.age}</td>
                   <td className="border px-4 py-2 flex justify-around">
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
