@@ -11,13 +11,13 @@ dotenv.config();
 
 const url = process.env.MONGO_DB_URL;
 app.use(bodyParser.json());
+app.use(core());
 // Define Mongoose Schema
 const passopSchema = new mongoose.Schema({
   
   name: String,
   age: Number,
 });
-app.use(core());
 // Create Mongoose Model for the "passop" collection
 const Passop = mongoose.model("passop", passopSchema); // Third argument specifies the collection name
 
@@ -33,7 +33,7 @@ async function connectToDatabase() {
 connectToDatabase();
 
 // Post api
-app.post("/insert", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
     const newDocuments = [
       { name: "Ram", age: 21 },
