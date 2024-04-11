@@ -1,6 +1,7 @@
 import React from "react";
 import "./globals.css";
 import Home from "./home/page";
+import ImageCarousel from "./Carousel.tsx";
 
 const Page = () => {
   return (
@@ -36,7 +37,9 @@ const Page = () => {
       <div className="w-full mx-auto mt-8">
         <div className="bg-gray-100 p-4 rounded-lg shadow-md">
           {/* Your carousel code goes here */}
-          <p className="text-center text-gray-600">Carousel goes here</p>
+          {/* <p className="text-center text-gray-600">Carousel goes here</p> */}
+          <ImageCarousel/>
+          {/* <img src="next.svg" alt="Image 1" /> */}
         </div>
       </div>
     </div>

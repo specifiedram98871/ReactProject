@@ -18,7 +18,7 @@ const Header = () => {
               <span className="text-sky-600 cursor-pointer"> /&gt;</span>
             </Link>
           </div>
-          <ul className="flex space-x-4 text-white">
+          <ul className="flex space-x-4 text-white md:flex-row  flex-col text-right">
             <li>
               <Link href="/home" className="hover:text-gray-300">
                 Home
