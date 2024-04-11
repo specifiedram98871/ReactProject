@@ -1,13 +1,11 @@
-'use client';
+"use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
-const API_KEY = process.env.NEXT_APP_NEWS_API_KEY || "your api key";
 
 interface Source {
   id: string;
   name: string;
-} 
+}
 
 interface Article {
   source: Source;
@@ -22,9 +20,9 @@ interface Article {
 
 const Home: React.FC = () => {
   const [news, setNews] = useState<Article[]>([]);
-  const [country, setCountry] = useState<string>('');
+  const [country, setCountry] = useState<string>("");
   const [showMore, setShowMore] = useState<boolean>(false);
-
+  const API_KEY = process.env.NEXT_PUBLIC_APP_NEWS_API_KEY;
   const fetchNews = (country: string) => {
     axios
       .get<{ articles: Article[] }>(
@@ -42,7 +40,7 @@ const Home: React.FC = () => {
     if (country) {
       fetchNews(country);
     }
-  }, [country]);
+  }, []);
 
   const handleSearch = () => {
     fetchNews(country);
@@ -73,11 +71,13 @@ const Home: React.FC = () => {
       <div className="grid grid-cols-3 gap-4">
         {news.slice(0, showMore ? news.length : 3).map((item, index) => (
           <div key={index} className="border rounded-md p-4">
-            <img
-              src={item.urlToImage}
-              alt={item.title}
-              className="h-32 w-full object-cover mb-4"
-            />
+            {item.urlToImage == null ? null : (
+              <img
+                src={item.urlToImage}
+                alt={item.title}
+                className="h-32 w-full object-cover mb-4"
+              />
+            )}
             <h2 className="text-xl font-bold mb-2">{item.title}</h2>
             <p className="text-gray-600">{item.description}</p>
           </div>

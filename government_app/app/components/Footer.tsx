@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-800 text-white py-6 w-full">
+    <footer className="bg-blue-800 text-white py-4 w-full">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center relative">
         <div className="mb-4 md:mb-0">
           <p className="text-lg">&copy; 2023 ms.gov | All Rights Reserved</p>
@@ -18,8 +18,11 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="text-center mt-4 absolute bottom-0 w-full">
-        <p className="text-sm">Government News: Stay updated with the latest government initiatives, policies, and events all over the world.</p>
+      <div className="text-center mt-2 bottom-0 w-full">
+        <p className="text-sm">
+          Government News: Stay updated with the latest government initiatives,
+          policies, and events all over the world.
+        </p>
       </div>
     </footer>
   );
