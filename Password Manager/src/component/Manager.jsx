@@ -24,9 +24,8 @@ const Manager = () => {
         "Content-Type": "application/json",
       },
     });
-    const data = await req.json();
-    setPassArr(data);
-    console.log(data);
+    const password = await req.json();
+    setPassArr(password);
   }
   useEffect(() => {
     // let passwords = localStorage.getItem("password");
@@ -208,7 +207,7 @@ const Manager = () => {
                   key={i}
                   className={i % 2 === 0 ? "bg-gray-200" : "bg-white"}
                 >
-                  <td className="border px-4 py-2">{password.id}</td>
+                  <td className="border px-4 py-2">{password.site}</td>
                   <td className="border px-4 py-2">{password.name}</td>
                   <td className="border px-4 py-2">{password.age}</td>
                   <td className="border px-4 py-2 flex justify-around">

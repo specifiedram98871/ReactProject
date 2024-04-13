@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(core());
 // Define Mongoose Schema
 const passopSchema = new mongoose.Schema({
-  
+  site: String,
   name: String,
   age: Number,
 });
@@ -35,10 +35,7 @@ connectToDatabase();
 // Post api
 app.post("/", async (req, res) => {
   try {
-    const newDocuments = [
-      { name: "Ram", age: 21 },
-      { name: "Ramm", age: 22 },
-    ];
+    const newDocuments = req.body;
     const data = Passop.insertMany(newDocuments); // Wait for the data insertion
     console.log("Data inserted successfully");
     res.json(data);
@@ -61,18 +58,18 @@ app.get("/", async (req, res) => {
 
 // Delete api
 // Delete api
-app.delete("/", async (req, res) => {
+app.delete("/delete/:_id", async (req, res) => {
   try {
-    const data = await Passop.findOne({});
-    res.json(data);
+    const password = req.body;
     const id = req.params._id;
-    const deletedDocument = await Passop.deleteOne({ _id: data._id });
+    const deletedDocument = await Passop.deleteOne(password);
     if (!deletedDocument.deletedCount) {
       // If the document with the provided id doesn't exist
-      return res.status(404).json({ error: "Document not found", data ,id});
+      return res.status(404).json({ error: "Document not found" ,id});
     }
     console.log("Deleted document:", { deletedDocument }, id);
-    res.json({ message: "Document deleted successfully", id: id });
+    res.send({success: true, id: id});
+    res.json({ message: "Document deleted successfully",  id });
   } catch (error) {
     console.log(error);
     const id = req.params._id;
