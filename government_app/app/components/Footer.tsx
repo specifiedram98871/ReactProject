@@ -11,8 +11,6 @@ const Footer = () => {
           <ul className="flex space-x-4">
             <li className="cursor-pointer hover:text-gray-300">Government</li>
             <li className="cursor-pointer hover:text-gray-300">Industry</li>
-            <li className="cursor-pointer hover:text-gray-300">Living</li>
-            <li className="cursor-pointer hover:text-gray-300">Visiting</li>
             <li className="cursor-pointer hover:text-gray-300">Education</li>
             <li className="cursor-pointer hover:text-gray-300">Services</li>
           </ul>
@@ -20,7 +18,7 @@ const Footer = () => {
       </div>
       <div className="text-center mt-2 bottom-0 w-full">
         <p className="text-sm">
-          Government News: Stay updated with the latest government initiatives,
+          News_Agency: Stay updated with the latest government initiatives,
           policies, and events all over the world.
         </p>
       </div>

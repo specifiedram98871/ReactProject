@@ -52,9 +52,12 @@ const Home: React.FC = () => {
 
   return (
     <div className="container mx-auto p-8">
-      <div className="flex mb-4 justify-center md:w-full">
+      <h1 className="text-1xl font-bold mb-4">
+        "Discover Global News: Explore Stories from Every Corner of the World!"
+      </h1>
+      <div className="flex mb-4 justify-around gap-3  md:w-full">
         <input
-          className="border rounded-md p-2 mr-2"
+          className="border rounded-md p-2 w-full"
           type="text"
           value={country}
           onChange={(e) => setCountry(e.target.value)}

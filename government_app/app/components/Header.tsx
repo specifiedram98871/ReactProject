@@ -4,15 +4,19 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="bg-blue-800 py-4">
+    <header className="bg-blue-800 ">
       <div className="container mx-auto">
-        <nav className="flex justify-between items-center">
-          <div className="text-white font-bold text-xl">
+        <nav className="flex justify-between items-center ">
+          <div className="text-white font-bold text-xl flex justify-between items-center">
+            <div className=" w-[90px]">
+
+            <img src="/images/logo.png" alt="governmentimg" srcset="" />
+            </div>
             <Link href="/">
               <span className="text-sky-600 cursor-pointer">&lt;</span>
             </Link>
             <Link href="/">
-              <span className="text-sky-200 cursor-pointer">Government _News</span>
+              <span className="text-sky-200 cursor-pointer">News_Agency</span>
             </Link>
             <Link href="/">
               <span className="text-sky-600 cursor-pointer"> /&gt;</span>

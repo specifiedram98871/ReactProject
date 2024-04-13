@@ -31,7 +31,7 @@ const ImageCarousel = () => {
       </h2>
       <div className="relative flex items-center justify-center">
         <button
-          className="absolute left-0  bg-gray-800 text-white px-4 py-2 rounded-md"
+          className="absolute left-0 text-gray-400 px-4 py-2 rounded-md text-3xl"
           onClick={prevImage}
         >
           <span>&lt;</span>
@@ -39,10 +39,10 @@ const ImageCarousel = () => {
         <img
           src={images[currentImageIndex]}
           alt={`Image ${currentImageIndex + 1}`}
-          className="max-w-full md:h-[500px] rounded-lg shadow-lg sm:h-[300px]"
+          className="max-w-full md:h-[450px] w-[500px] rounded-lg shadow-lg sm:h-[300px] h-[300px]"
         />
         <button
-          className="absolute right-0 bg-gray-800 text-white px-4 py-2 rounded-md "
+          className="absolute right-0 text-gray-400 px-4 py-2 text-3xl "
           onClick={nextImage}
         >
           <span>&gt;</span>
