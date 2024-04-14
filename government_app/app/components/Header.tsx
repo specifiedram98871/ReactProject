@@ -38,6 +38,11 @@ const Header = () => {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/contact" className="hover:text-gray-300">
+                SignIn for API
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
@@ -46,3 +51,68 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <li class="menu-active menu-wordpress">
+//   <a href="#" rel="noopener">
+//     <span>Web Design</span>
+//   </a>
+//   <ul class="submenu plugins">
+//     <li>
+//       <a href="https://alvarotrigo.com/blog/tag/portfolios/" rel="noopener">
+//         <i></i>Portfolios
+//       </a>
+//     </li>
+//     <li>
+//       <a href="https://alvarotrigo.com/blog/tag/inspiration/" rel="noopener">
+//         <i></i>Inspiration
+//       </a>
+//     </li>
+//     <li>
+//       <a
+//         href="https://alvarotrigo.com/blog/web-developing/templates/"
+//         rel="noopener"
+//       >
+//         <i></i>Templates
+//       </a>
+//     </li>
+//     <li>
+//       <a
+//         href="https://alvarotrigo.com/blog/web-developing/web-design/"
+//         rel="noopener"
+//       >
+//         <i></i>Web Design
+//       </a>
+//     </li>
+//     <li>
+//       <a
+//         href="https://alvarotrigo.com/blog/tag/website-builders/"
+//         rel="noopener"
+//       >
+//         <i></i>Website Builders
+//       </a>
+//     </li>
+//     <li>
+//       <a href="https://alvarotrigo.com/blog/tag/wordpress/" rel="noopener">
+//         <i></i>WordPress
+//       </a>
+//     </li>
+//     <li>
+//       <a href="https://alvarotrigo.com/blog/tag/fonts/" rel="noopener">
+//         <i></i>Fonts
+//       </a>
+//     </li>
+//   </ul>
+// </li>;
