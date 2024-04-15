@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 
 const Header = () => {
+
   return (
     <header className="bg-blue-800 ">
       <div className="container mx-auto">
@@ -22,25 +23,21 @@ const Header = () => {
               <span className="text-sky-600 cursor-pointer"> /&gt;</span>
             </Link>
           </div>
-          <ul className="flex space-x-4 text-white md:flex-row  flex-col text-right">
+          <ul className="flex space-x-5 text-white md:flex-row  flex-col font-semibold">
             <li>
-              <Link href="/home" className="hover:text-gray-300">
-                Home
+              <Link href="/home" className="hover:text-gray-400">
+                Get_News_API
+              </Link>
+            </li>
+            
+            <li className="cursor-pointer text-red-400">
+              <Link href="/contact" className="hover:scale-[1.2]">
+                Live_News
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-gray-300">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-gray-300">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-gray-300">
-                SignIn for API
+              <Link href="/contact" className="hover:text-gray-400">
+                Log_In
               </Link>
             </li>
           </ul>

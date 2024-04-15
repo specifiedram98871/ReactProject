@@ -18,7 +18,7 @@ interface Article {
   content: string;
 }
 
-const Home: React.FC = () => {
+const News: React.FC = () => {
   const [news, setNews] = useState<Article[]>([]);
   const [country, setCountry] = useState<string>("");
   const [showMore, setShowMore] = useState<boolean>(false);
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
           type="text"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
-          placeholder="Enter country"
+          placeholder="Search for news by keyword associated with the country"
         />
         <button
           onClick={handleSearch}
@@ -71,8 +71,8 @@ const Home: React.FC = () => {
         </button>
       </div>
       <h1 className="text-3xl font-bold mb-4">Latest News</h1>
-      <div className="grid grid-cols-3 gap-4">
-        {news.slice(0, showMore ? news.length : 3).map((item, index) => (
+      <div className="grid grid-cols-2 gap-4">
+        {news.slice(0, showMore ? news.length : 2).map((item, index) => (
           <div key={index} className="border rounded-md p-4">
             {item.urlToImage == null ? null : (
               <img
@@ -100,4 +100,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default News;
