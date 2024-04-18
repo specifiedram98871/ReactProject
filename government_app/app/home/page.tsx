@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -23,6 +24,7 @@ const News: React.FC = () => {
   const [country, setCountry] = useState<string>("");
   const [showMore, setShowMore] = useState<boolean>(false);
   const API_KEY = process.env.NEXT_PUBLIC_APP_NEWS_API_KEY;
+
   const fetchNews = (country: string) => {
     axios
       .get<{ articles: Article[] }>(
@@ -37,7 +39,7 @@ const News: React.FC = () => {
   };
 
   useEffect(() => {
-    if (country) {
+    if (country ) {
       fetchNews(country);
     }
   }, []);
@@ -46,8 +48,8 @@ const News: React.FC = () => {
     fetchNews(country);
   };
 
-  const handleShowMore = () => {
-    setShowMore(true);
+  const handleToggle = () => {
+    setShowMore(!showMore);
   };
 
   return (
@@ -71,8 +73,9 @@ const News: React.FC = () => {
         </button>
       </div>
       <h1 className="text-3xl font-bold mb-4">Latest News</h1>
-      <div className="grid grid-cols-2 gap-4">
-        {news.slice(0, showMore ? news.length : 2).map((item, index) => (
+      {news.length ===0 && <p className="text-gray-600 h-[10vw]">No news found</p>}
+      <div className="grid grid-cols-3 gap-4">
+        {news.slice(0, showMore ? news.length : 6).map((item, index) => (
           <div key={index} className="border rounded-md p-4">
             {item.urlToImage == null ? null : (
               <img
@@ -86,16 +89,15 @@ const News: React.FC = () => {
           </div>
         ))}
       </div>
-      {!showMore && (
-        <div className="flex justify-center mt-4">
-          <button
-            onClick={handleShowMore}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Show More
-          </button>
-        </div>
-      )}
+      <div className="flex justify-center mt-4">
+        <button
+          onClick={handleToggle}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          {news.length ===0 ? "No news found" : showMore ? "Show Less" : "Show More"}
+          
+        </button>
+      </div>
     </div>
   );
 };

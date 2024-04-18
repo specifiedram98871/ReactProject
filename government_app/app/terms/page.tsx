@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { termsAndConditionsData } from "./terms";
 
-const Page = () => {
+const Terms = () => {
   const [showAll, setShowAll] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4; // Number of items per page
@@ -68,4 +68,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Terms;

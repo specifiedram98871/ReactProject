@@ -2,7 +2,6 @@ import React from "react";
 import "./globals.css";
 import News from "./home/page";
 import ImageCarousel from "./Carousel.tsx";
-import Policies from "./terms/page";
 import Services from "./services/page";
 
 const Page = () => {
@@ -17,7 +16,6 @@ const Page = () => {
         
       </div>
 
-      {/* Right Section */}
 
       {/* Carousel Section */}
       <div className=" bg-slate-50 mt-10">

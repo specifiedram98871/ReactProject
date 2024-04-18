@@ -25,13 +25,13 @@ const Header = () => {
           </div>
           <ul className="flex space-x-5 text-white md:flex-row  flex-col font-semibold">
             <li>
-              <Link href="/home" className="hover:text-gray-400">
+              <Link href="/" className="hover:text-gray-400">
                 Get_News_API
               </Link>
             </li>
             
             <li className="cursor-pointer text-red-400">
-              <Link href="/contact" className="hover:scale-[1.2]">
+              <Link href="/home" className="hover:scale-[1.2]">
                 Live_News
               </Link>
             </li>
